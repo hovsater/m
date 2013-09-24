@@ -1,27 +1,29 @@
 # m
-m is a lightweight tool for using marks in
-[bash](http://en.wikipedia.org/wiki/Bash_(Unix_shell\)).
-
+m is a lightweight tool for working with bookmarks in the terminal.
 
 ## Usage
-m uses `$HOME/.marks` to store marks. Marks are managed by editing this file in
-your favorite editor.
+m uses `$HOME/.marks` to store bookmarks. Bookmarks can be managed by editing
+the marks file in your favorite editor. m even provide a shortcut for doing
+this: `m -e`.
 
-**File structure**
+### Structure
+The structure of `$HOME/.marks` is very similar to how you define hosts in `/etc/hosts`. Bookmarks are define in the format: `<key> <path>`.
+
+**Example**
 
     hosts   /etc/hosts
     awesome /code/work/projects/awesome
 
-**Command-line interface**
+### Command-line interface
 
     $ m
     Usage:
-      m [OPTION] [MARK]
+      m [OPTION] [BOOKMARK]
 
     General Options:
-      -e, --edit    Edit mark with $EDITOR
       -h, --help    Usage
-      -l, --list    List marks
+      -l, --list    List bookmarks
+      -e, --edit    Edit BOOKMARK with $EDITOR
 
 ## Installation
 Put [m](https://raw.github.com/KevinSjoberg/m/master/m) in a directory of your

@@ -7,12 +7,12 @@ m() {
     ""|"-h"|"--help")
 cat <<-USAGE
 Usage:
-  m [OPTION] [MARK]
+  m [OPTION] [BOOKMARK]
 
 General Options:
-  -e, --edit    Edit mark with \$EDITOR
   -h, --help    Usage
-  -l, --list    List marks
+  -l, --list    List bookmarks
+  -e, --edit    Edit BOOKMARK with \$EDITOR
 USAGE
     ;;
     "-e"|"--edit")
