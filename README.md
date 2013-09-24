@@ -26,6 +26,14 @@ file, `/etc/hosts`. Bookmarks are defined in the format: `<key> <path>`.
       -l, --list    List bookmarks
       -e, --edit    Edit BOOKMARK with $EDITOR
 
+**Example**
+
+    ~ $ m -l
+    hosts   /etc/hosts
+    awesome /code/work/projects/awesome
+    ~ $ m awesome
+    /code/work/projects/awesome $
+
 ## Installation
 Put [m](https://raw.github.com/KevinSjoberg/m/master/m) in a directory of your
 choice. I chose `$HOME/bin/m`. Source it via your `$HOME/.bashrc`.
