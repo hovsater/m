@@ -1,6 +1,6 @@
 # m
 m is a lightweight tool for using marks in
-[bash](http://en.wikipedia.org/wiki/Bash_(Unix_shell)).
+[bash](http://en.wikipedia.org/wiki/Bash_(Unix_shell\)).
 
 
 ## Usage
