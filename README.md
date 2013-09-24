@@ -23,6 +23,10 @@ your favorite editor.
       -h, --help    Usage
       -l, --list    List marks
 
+## Installation
+Put [m](https://raw.github.com/KevinSjoberg/m/master/m) in a directory of your
+choice. I chose `$HOME/bin/m`. Source it via your `$HOME/.bashrc`.
+
 ## Alternatives
 
   * [bashmarks](https://github.com/huyng/bashmarks)
