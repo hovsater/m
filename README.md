@@ -16,7 +16,7 @@ your favorite editor.
 
     $ m
     Usage:
-      m [MARK]
+      m [OPTION] [MARK]
 
     General Options:
       -e, --edit    Edit mark with $EDITOR
