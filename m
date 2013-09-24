@@ -16,8 +16,12 @@ General Options:
 USAGE
     ;;
     "-e"|"--edit")
-      local mark=$2
-      local path=$(cat $marks | grep "^$mark" | awk '{print $2}')
+      if [ -n "$2" ]; then
+        local mark=$2
+        local path=$(cat $marks | grep "^$mark" | awk '{print $2}')
+      else
+        local path=$marks
+      fi
 
       if [[ -n "$path" ]]; then
         eval "$EDITOR $path"
