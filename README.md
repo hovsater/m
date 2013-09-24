@@ -7,7 +7,8 @@ the marks file in your favorite editor. m even provide a shortcut for doing
 this: `m -e`.
 
 ### Structure
-The structure of `$HOME/.marks` is very similar to how you define hosts in `/etc/hosts`. Bookmarks are define in the format: `<key> <path>`.
+The structure of `$HOME/.marks` is very similar to the structure of the hosts
+file, `/etc/hosts`. Bookmarks are defined in the format: `<key> <path>`.
 
 **Example**
 
