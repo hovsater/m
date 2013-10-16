@@ -40,7 +40,7 @@ file, `/etc/hosts`. Bookmarks are defined in the format: `<key> <path>`.
 m can be installed with [Homebrew](http://brew.sh/).
 
     brew tap KevinSjoberg/formulas
-    brew install KevinSjoberg/m
+    brew install m
 
 ### Manually
 Put [m](https://raw.github.com/KevinSjoberg/m/master/m) in a directory of your
