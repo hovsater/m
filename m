@@ -18,13 +18,13 @@ USAGE
     "-e"|"--edit")
       if [ -n "$2" ]; then
         local mark=$2
-        local path=$(cat $marks | grep "^$mark" | awk '{print $2}')
+        local mark_dir=$(cat $marks | grep "^$mark" | awk '{print $2}')
       else
-        local path=$marks
+        local mark_dir=$marks
       fi
 
-      if [[ -n "$path" ]]; then
-        eval "$EDITOR $path"
+      if [[ -n "$mark_dir" ]]; then
+        eval "$EDITOR $mark_dir"
       else
         echo "No mark named: $mark"
         return 1
@@ -35,10 +35,10 @@ USAGE
     ;;
     *)
       local mark=$1
-      local path=$(cat $marks | grep "^$mark" | awk '{print $2}')
+      local mark_dir=$(cat $marks | grep "^$mark" | awk '{print $2}')
 
-      if [ -n "$path" ]; then
-        eval "cd $path"
+      if [ -n "$mark_dir" ]; then
+        eval "cd $mark_dir"
       else
         echo "No mark named: $mark"
         return 1
