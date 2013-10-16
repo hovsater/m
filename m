@@ -60,4 +60,9 @@ __m_complete() {
   return 0
 }
 
+if [ $ZSH_VERSION ]; then
+  autoload -U compinit && compinit
+  autoload -U bashcompinit && bashcompinit
+fi
+
 complete -F __m_complete m
