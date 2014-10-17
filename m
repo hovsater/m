@@ -35,7 +35,7 @@ USAGE
     ;;
     *)
       local mark=$1
-      local mark_dir=$(cat $marks | grep "^$mark" | awk '{print $2}')
+      local mark_dir=$(cat $marks | grep "^$mark" | awk '{print $2}' | head -1)
 
       if [ -n "$mark_dir" ]; then
         eval "cd $mark_dir"
