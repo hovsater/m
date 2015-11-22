@@ -1,6 +1,23 @@
 #!/bin/sh
 set -U marks_file $HOME/.marks
 
+function m
+  if test -n $argv[1];
+    switch $argv[1]
+      case "-h" "--help"
+        __m_print_usage
+      case "-e" "--edit"
+        __m_edit_mark
+      case "-l" "--list"
+        __m_list_marks
+      case '*'
+        __m_use_mark $argv[1]
+    end
+  else
+    __m_print_usage
+  end
+end
+
 function __m_print_usage  --description "prints usage instructions"
   cat '
   Usage:
@@ -11,6 +28,10 @@ function __m_print_usage  --description "prints usage instructions"
     -l, --list    List bookmarks
     -e, --edit    Edit BOOKMARK with \$EDITOR
   '
+end
+
+function __m_list_marks --description "lists all marks"
+  cat $marks_file
 end
 
 function __m_edit_mark --description "edit marks file"
@@ -31,10 +52,6 @@ function __m_edit_mark --description "edit marks file"
   end
 end
 
-function __m_list_marks --description "lists all marks"
-  cat $marks_file
-end
-
 function __m_use_mark --description "navigates to the mark"
   if test ! -n $argv[1]
     echo "Need a mark to navigate to"
@@ -52,23 +69,6 @@ end
 
 function __m_mark_destination --description "returns a destination path for the mark"
   echo (cat $marks_file | grep "^$argv[1]" | awk '{print $2}')
-end
-
-function m
-  if test -n $argv[1];
-    switch $argv[1]
-      case "-h" "--help"
-        __m_print_usage
-      case "-e" "--edit"
-        __m_edit_mark
-      case "-l" "--list"
-        __m_list_marks
-      case '*'
-        __m_use_mark $argv[1]
-    end
-  else
-    __m_print_usage
-  end
 end
 
 function __m_mark_names
