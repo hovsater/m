@@ -46,6 +46,9 @@ m can be installed with [Homebrew](http://brew.sh/).
 Put [m](https://raw.github.com/KevinSjoberg/m/master/m) in a directory of your
 choice. I chose `$HOME/bin/m`. Source it via your `$HOME/.bashrc`.
 
+### Fish Shell
+Put [m.fish](https://raw.github.com/KevinSjoberg/m/master/m.fish) in a directory of your choice. I chose `$HOME/bin/m.fish`. Source it via your `$HOME/.config/fish/config.fish`.
+
 ## Alternatives
 
   * [bashmarks](https://github.com/huyng/bashmarks)
