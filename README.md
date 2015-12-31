@@ -19,12 +19,16 @@ file, `/etc/hosts`. Bookmarks are defined in the format: `<key> <path>`.
 
     $ m
     Usage:
-      m [OPTION] [BOOKMARK]
+      m [OPTION] [MARK]
 
     General Options:
-      -h, --help    Usage
-      -l, --list    List bookmarks
-      -e, --edit    Edit BOOKMARK with $EDITOR
+      -h, --help          - Usage
+      -l, --list          - List marks
+      -e, --edit          - Edit marks with \$EDITOR
+      -s, --save   <mark> - Saves the current directory as "mark"
+      -p, --print  <mark> - Prints the directory associated with "mark"
+      -d, --delete <mark> - Deletes the mark
+      <mark>              - Goes (cd) to the directory associated with "mark"'
 
 **Example**
 
