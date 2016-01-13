@@ -107,7 +107,7 @@ function __m_delete_mark --description "Delete a bookmark"
     echo -e "\033[0;31mERROR: bookmark name required\033[00m"
     return 1
   end
-  if not _valid_bookmark $argv[1];
+  if not __m_valid_mark $argv[1];
     echo -e "\033[0;31mERROR: bookmark '$argv[1]' does not exist\033[00m"
     return 1
   else
