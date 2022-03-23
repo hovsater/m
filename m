@@ -1,68 +1,66 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-m() {
-  local marks=~/.marks
+function m() {
+  local marks="$HOME/.config/m/marks"
+  local version="0.0.1"
+
+  # Create "$HOME/.config/m/marks" if it doesn't exist.
+  if ! [[ -f "$marks" ]]; then
+    mkdir -p "$(dirname "$marks")"
+    touch "$marks"
+  fi
 
   case "$1" in
     ""|"-h"|"--help")
-cat <<-USAGE
-Usage:
-  m [OPTION] [BOOKMARK]
-
-General Options:
-  -h, --help    Usage
-  -l, --list    List bookmarks
-  -e, --edit    Edit BOOKMARK with \$EDITOR
-USAGE
-    ;;
-    "-e"|"--edit")
-      if [ -n "$2" ]; then
-        local mark=$2
-        local mark_dir=$(cat $marks | grep "^$mark" | awk '{print $2}')
-      else
-        local mark_dir=$marks
-      fi
-
-      if [[ -n "$mark_dir" ]]; then
-        eval "$EDITOR $mark_dir"
-      else
-        echo "No mark named: $mark"
-        return 1
-      fi
-    ;;
+      cat <<-HELP
+			  usage: [OPTIONS...] MARK
+			  -l  --list    List available marks
+			  -e  --edit    Edit available marks
+			  -h  --help    Show this usage summary
+			  -v  --version Print version information
+			HELP
+      ;;
     "-l"|"--list")
-      cat $marks
-    ;;
-    *)
-      local mark=$1
-      local mark_dir=$(cat $marks | grep "^$mark" | awk '{print $2}' | head -1)
-
-      if [ -n "$mark_dir" ]; then
-        eval "cd $mark_dir"
+      cat "$marks"
+      ;;
+    "-e"|"--edit")
+      if [[ -n "$EDITOR" ]]; then
+        $EDITOR "$marks"
       else
-        echo "No mark named: $mark"
+        echo "m: \$EDITOR not defined. Please set it and try again."
         return 1
       fi
-    ;;
+      ;;
+    "-v"|"--version")
+      echo "$version"
+      ;;
+    *)
+      read -r mark_name mark_path < <(grep "^$1 " "$marks")
+      
+      # Ensure that we got a match back
+      if [[ -n "$mark_name" ]]; then
+        # Expand tilde to the home directory.
+        mark_path=${mark_path/#\~/$HOME}
+
+        if [[ -d "$mark_path" ]]; then
+          cd "$mark_path" || return
+        else
+          echo "m: $mark_path is not a directory"
+          return 1
+        fi
+      else
+        echo "m: mark $1 does not exist"
+        return 1
+      fi
+      ;;
   esac
 }
 
-__m_complete() {
-  local cur
+_m_completion() {
   local marks
 
-  cur=${COMP_WORDS[COMP_CWORD]}
-  marks=$(m -l | awk '{print $1}')
-
-  COMPREPLY={}
-  COMPREPLY=($(compgen -W "$marks" -- $cur))
-
-  return 0
+  marks=$(m -l | cut -d ' ' -f1)
+  COMPREPLY=($(compgen -W "$marks" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 
-if [ $ZSH_VERSION ]; then
-  autoload -U compinit && compinit
-  autoload -U bashcompinit && bashcompinit
-fi
-
-complete -F __m_complete m
+complete -F _m_completion m
