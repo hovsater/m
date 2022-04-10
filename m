@@ -12,12 +12,12 @@ function m() {
 
   case "$1" in
     ""|"-h"|"--help")
-      cat <<-HELP
-			  usage: [OPTIONS...] MARK
-			  -l  --list    List available marks
-			  -e  --edit    Edit available marks
-			  -h  --help    Show this usage summary
-			  -v  --version Print version information
+			cat <<-HELP
+			usage: [OPTIONS...] MARK
+			  -l	--list		List available marks
+			  -e	--edit		Edit available marks
+			  -h	--help		Show this usage summary
+			  -v	--version	Print version information
 			HELP
       ;;
     "-l"|"--list")
@@ -36,7 +36,7 @@ function m() {
       ;;
     *)
       read -r mark_name mark_path < <(grep "^$1 " "$marks")
-      
+
       # Ensure that we got a match back
       if [[ -n "$mark_name" ]]; then
         # Expand tilde to the home directory.
@@ -44,8 +44,10 @@ function m() {
 
         if [[ -d "$mark_path" ]]; then
           cd "$mark_path" || return
+        elif [[ -f "$mark_path" ]]; then
+          $EDITOR "$mark_path"
         else
-          echo "m: $mark_path is not a directory"
+          echo "m: $mark_path is not a directory/file"
           return 1
         fi
       else
