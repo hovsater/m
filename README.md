@@ -4,13 +4,14 @@ m is a lightweight tool for working with bookmarks in bash.
 
 ## Usage
 
-m uses `$HOME/.config/m/marks` to store bookmarks. Bookmarks can be managed by editing
-the marks file in your favorite editor.
+m uses `$HOME/.config/m/marks` to store bookmarks. Bookmarks can be managed by
+editing the marks file in your favorite editor. Booksmarks can be either files or
+directories.
 
 ### Structure
 
-The structure of `$HOME/.config/m/marks` is very similar to the structure of the hosts
-file, `/etc/hosts`. Bookmarks are defined in the format: `<name> <path>`.
+The structure of `$HOME/.config/m/marks` is very similar to the structure of the
+hosts file, `/etc/hosts`. Bookmarks are defined in the format: `<name> <path>`.
 
 **Example**
 
