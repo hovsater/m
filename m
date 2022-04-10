@@ -14,10 +14,10 @@ function m() {
     ""|"-h"|"--help")
 	cat <<-HELP
 	usage: [OPTIONS...] MARK
-	  -l	--list		List available marks
-	  -e	--edit		Edit available marks
-	  -h	--help		Show this usage summary
-	  -v	--version	Print version information
+	  -l --list	List available marks
+	  -e --edit	Edit available marks
+	  -h --help	Show this usage summary
+	  -v --version	Print version information
 	HELP
       ;;
     "-l"|"--list")
